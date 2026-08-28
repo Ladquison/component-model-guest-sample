@@ -1,0 +1,17 @@
+**/__pycache__/**
+src/guest/cpp/build/**
+src/guest/cpp/wit/**
+src/guest/csharp/bin/**
+src/guest/csharp/obj/**
+src/guest/csharp/wit/**
+src/guest/python/wit/**
+src/guest/rust/src/bindings.rs
+src/guest/rust/target/**
+src/guest/rust/wit/**
+src/guest/ts/wit/**
+src/host/build/**
+src/host/wasm/**
+tools/ninja/**
+tools/wasi-sdk/**
+tools/wasmtime/**
+tools/wit-bindgen/**

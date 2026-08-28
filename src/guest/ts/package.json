@@ -1,0 +1,8 @@
+{
+  "name": "Component",
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "build": "npx tsc --noEmit && jco componentize src/Component.ts --wit wit/utility.wit --out ./../../host/wasm/Component_ts.wasm"
+  }
+}

@@ -1,0 +1,37 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Library</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <RootNamespace>component</RootNamespace>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RuntimeIdentifier>wasi-wasm</RuntimeIdentifier>
+    <UseAppHost>false</UseAppHost>
+    <PublishTrimmed>true</PublishTrimmed>
+    <InvariantGlobalization>true</InvariantGlobalization>
+    <SelfContained>true</SelfContained>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="BytecodeAlliance.Componentize.DotNet.Wasm.SDK" Version="0.8.0-preview*" />
+    <PackageReference Include="runtime.win-x64.microsoft.dotnet.ilcompiler.llvm" Version="10.0.0-rc.1.26306.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Wit Update="wit/utility.wit" World="utility" />
+  </ItemGroup>
+  
+  <Target Name="CopyWasmAfterPublish" AfterTargets="Publish">
+    <ItemGroup>
+      <WasmFiles Include="$(PublishDir)/*.wasm" />
+    </ItemGroup>
+
+    <Message Text="Copying wasm to host..." Importance="high" />
+
+    <Copy
+      SourceFiles="@(WasmFiles)"
+      DestinationFiles="@(WasmFiles->'$(ProjectDir)../../host/wasm/Component_csharp.wasm')"
+      SkipUnchangedFiles="true" />
+  </Target>
+</Project>

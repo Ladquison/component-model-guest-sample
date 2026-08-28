@@ -1,0 +1,9 @@
+package app:utility;
+
+interface info {
+    get-message: func(number: s32) -> string;
+}
+
+world utility {
+    export info;
+}

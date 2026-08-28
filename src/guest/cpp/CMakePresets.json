@@ -1,0 +1,25 @@
+{
+  "version": 3,
+  "configurePresets": [
+    {
+      "name": "wasi",
+      "generator": "Ninja",
+      "displayName": "WASI SDK (wasm32-wasip2)",
+      "binaryDir": "${sourceDir}/build",
+      "cacheVariables": {
+        "CMAKE_CXX_STANDARD": "20",
+        "CMAKE_CXX_STANDARD_REQUIRED": "ON",
+        "CMAKE_TOOLCHAIN_FILE": "${sourceDir}/../../../tools/wasi-sdk/share/cmake/wasi-sdk-p2.cmake",
+        "CMAKE_MAKE_PROGRAM": "${sourceDir}/../../../tools/ninja/ninja.exe",
+        "CMAKE_EXPORT_COMPILE_COMMANDS": "ON",
+        "CMAKE_BUILD_TYPE": "Debug"
+      }
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "wasi",
+      "configurePreset": "wasi"
+    }
+  ]
+}
